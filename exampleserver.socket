@@ -1,0 +1,4 @@
+PartOf=exampleserver.service
+
+[Socket]
+ListenFIFO=%t/exampleserver.stdin
