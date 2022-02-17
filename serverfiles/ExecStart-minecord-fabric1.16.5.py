@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 WEBHOOK_URL = os.environ["WEBHOOK_URL"]
 
-webhook = DiscordWebhook(url=WEBHOOK_URL, content="[Fabric] サーバを開始します。")
+webhook = DiscordWebhook(url=WEBHOOK_URL, content="[Fabric:35000] サーバを開始します。")
 webhook.execute()
 
 
@@ -26,9 +26,9 @@ def on_modified(event):
                 webhook = DiscordWebhook(
                     url=WEBHOOK_URL, content='[Fabric] '+connected_player_name+'がゲームに参加しました。')
                 webhook.execute()
-            elif re.match('\[\d{2}:\d{2}:\d{2}\] \[Server thread/INFO\]: .* left the game', last_line):
+            elif re.match('\[\d{2}:\d{2}:\d{2}\] \[Server thread/INFO\]: .* lost connection: Disconnected', last_line):
                 disconnected_player_name = re.search(
-                    '(?<=\[\d{2}:\d{2}:\d{2}\] \[Server thread/INFO\]: )(.*)(?= left the game)', last_line).group()
+                    '(?<=\[\d{2}:\d{2}:\d{2}\] \[Server thread/INFO\]: )(.*)(?= lost connection: Disconnected)', last_line).group()
                 webhook = DiscordWebhook(
                     url=WEBHOOK_URL, content='[Fabric] '+disconnected_player_name+'がゲームから退出しました。')
                 webhook.execute()
