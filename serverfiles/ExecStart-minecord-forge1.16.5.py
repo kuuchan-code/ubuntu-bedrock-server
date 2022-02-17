@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 WEBHOOK_URL = os.environ["WEBHOOK_URL"]
 
-webhook = DiscordWebhook(url=WEBHOOK_URL, content="サーバを開始します。")
+webhook = DiscordWebhook(url=WEBHOOK_URL, content="[Forge] サーバを開始します。")
 webhook.execute()
 
 
@@ -24,13 +24,13 @@ def on_modified(event):
                 connected_player_name = re.search(
                     '(?<=Player connected: )(.*)(?=, xuid:)', last_line).group()
                 webhook = DiscordWebhook(
-                    url=WEBHOOK_URL, content=connected_player_name+'がゲームに参加しました。')
+                    url=WEBHOOK_URL, content='[Forge]'+connected_player_name+'がゲームに参加しました。')
                 webhook.execute()
             elif re.match('\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}:\d{3} INFO] Player disconnected', last_line):
                 disconnected_player_name = re.search(
                     '(?<=Player disconnected: )(.*)(?=, xuid:)', last_line).group()
                 webhook = DiscordWebhook(
-                    url=WEBHOOK_URL, content=disconnected_player_name+'がゲームから退出しました。')
+                    url=WEBHOOK_URL, content='[Forge]'+disconnected_player_name+'がゲームから退出しました。')
                 webhook.execute()
 
 
