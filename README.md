@@ -11,10 +11,6 @@ Ubuntu の Minecraft 統合版サーバ管理のスクリプトです。サー�
 - setup.sh 以外のコードは割とシンプルかなと思います。
 - webhook でサーバの状況とユーザーの入退出を Discord に出せます。
 
-## タスク
-
-- 現在の設定を読み込めるようにする
-
 ## 要件
 
 - `pip install watchdog discord_webhook dotenv`
