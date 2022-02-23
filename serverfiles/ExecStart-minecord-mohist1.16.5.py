@@ -20,7 +20,7 @@ def on_modified(event):
     if os.path.getsize(event.src_path) != 0:
         with open(event.src_path, "r") as file:
             last_line = file.readlines()[-1]
-            if re.match('\[\d{2}:\d{2}:\d{2} INFO\]: (.*) logged in', last_line):
+            if re.match('\[\d{2}:\d{2}:\d{2} INFO\]: (.*) logged in with entity id ', last_line):
                 connected_player_name = re.search(
                     '(?<=\[\d{2}:\d{2}:\d{2} INFO\]: )(.*)(?=\[)', last_line).group()
                 webhook = DiscordWebhook(
