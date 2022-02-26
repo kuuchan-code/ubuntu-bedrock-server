@@ -9,7 +9,7 @@ Ubuntu の Minecraft 統合版サーバ管理のスクリプトです。サー�
 - cron で定期的にバックアップ・再起動できます。
 - 複数のサーバを建てられます。
 - setup.sh 以外のコードは割とシンプルかなと思います。
-- webhook でサーバの状況とユーザーの入退出を Discord に出せます。
+- webhook でサーバの状況とユーザの入退出を Discord に出せます。
 
 ## 要件
 
@@ -121,7 +121,7 @@ Ubuntu の Minecraft 統合版サーバ管理のスクリプトです。サー�
      ```
      以下の行を削除
      ```txt
-     /home/ユーザー名/不要なサーバ名/stop-and-backup-for-restart.sh
+     /home/ユーザ名/不要なサーバ名/stop-and-backup-for-restart.sh
      systemctl restart 不要なサーバ名
      ```
    - すべてのサーバを削除したい場合
@@ -133,5 +133,6 @@ Ubuntu の Minecraft 統合版サーバ管理のスクリプトです。サー�
      ```
      以下の行を削除
      ```txt
-     0 5 * * * /home/ユーザー名/.ubuntu-bedrock-server/stop-backup-and-restart.sh
+     30 4 1 * * systemctl reboot
+     30 4 2-31 * * /home/ユーザ名/.ubuntu-bedrock-server/stop-backup-and-restart.sh
      ```
